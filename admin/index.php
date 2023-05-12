@@ -4,6 +4,10 @@ session_start();
 include_once 'koneksi.php';
 include_once 'models/Produk.php';
 include_once 'models/Jenis_Produk.php';
+include_once 'models/Member.php';
+
+$sesi = $_SESSION['MEMBER'];
+if(isset($sesi)){
 include_once 'top.php';
 //memanggil dan memproses file bagian menu
 include_once 'menu.php';
@@ -20,15 +24,16 @@ include_once 'menu.php';
                         } else if (!empty($url)){
                             include_once ''.$url.'.php';
                         } else { 'dashboard.php';
-                       
-                        }
-                        
+                        }   
                         ?>
                     </div>
                 </main>
 </div>
-
 <?php
 //memanggil file bagian bawah
 include_once 'bottom.php';
+
+} else {
+    echo '<script> alert("anda tidak boleh masuk");history.back();</script>';
+}
 ?>
